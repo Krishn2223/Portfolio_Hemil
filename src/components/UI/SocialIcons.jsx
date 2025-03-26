@@ -1,4 +1,3 @@
-// src/components/UI/SocialIcons.jsx
 import React from "react";
 import {
   FaTwitter,
