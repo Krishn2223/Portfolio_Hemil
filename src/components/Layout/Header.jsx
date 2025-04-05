@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SocialIcons from "../UI/SocialIcons";
+import "../../styles/Header.css";
 
 const Header = () => {
   return (

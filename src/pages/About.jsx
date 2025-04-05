@@ -13,7 +13,6 @@ const About = () => {
     <div className="about-container">
       <div className="about-content">
         <div className="about-text">
-          <h1>About</h1>
           <p>I'm a product designer based in sunny Mumbai, India.</p>
           <p>
             Since 2015, I've enjoyed turning complex problems into simple,
