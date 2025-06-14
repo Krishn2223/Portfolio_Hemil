@@ -1,0 +1,51 @@
+.obscura-container {
+  min-height: 100vh;
+  background-color: #0a0a0a;
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.obscura-title {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.devices-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .devices-wrapper {
+    flex-direction: row;
+  }
+}
+
+.device {
+  border: 4px solid #333;
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.device.tablet {
+  width: 768px;
+  height: 500px;
+}
+
+.device.mobile {
+  width: 375px;
+  height: 667px;
+}
+
+.device-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

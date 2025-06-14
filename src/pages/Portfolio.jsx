@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Portfolio.css";
+// Import the images
+import webImage from "../assets/images/Obscura-artist-web-1.png";
+import mobileImage from "../assets/images/Obscura-artist-mobile-1.png";
+import { Link } from "react-router-dom";
 
 const portfolioProjects = [
   {
@@ -13,11 +17,12 @@ const portfolioProjects = [
   },
   {
     id: 2,
-    title: "Creating a Lean Design System",
+    title: "Obscura Artist Platform",
     type: "UI/UX",
-    image: "/images/project2.jpg",
+    webImage: webImage,
+    mobileImage: mobileImage,
     description:
-      "Developing an efficient and scalable design system for modern applications.",
+      "A responsive UI/UX design for artists showcasing their work, with different layouts optimized for web and mobile experiences. The platform allows artists to display their portfolio and connect with potential clients.",
     featured: false,
   },
   {
@@ -35,6 +40,17 @@ const Portfolio = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [visibleProjects, setVisibleProjects] = useState([]);
   const [filter, setFilter] = useState("All");
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  // Handle window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // Animation for projects on page load
   useEffect(() => {
@@ -69,6 +85,14 @@ const Portfolio = () => {
     }, 300);
   };
 
+  // Function to get the correct image based on device and project type
+  const getProjectImage = (project) => {
+    if (project.type === "UI/UX") {
+      return isMobile ? project.mobileImage : project.webImage;
+    }
+    return project.image;
+  };
+
   return (
     <div className="portfolio-container">
       <div className="portfolio-header">
@@ -97,12 +121,12 @@ const Portfolio = () => {
             key={project.id}
             className={`portfolio-item ${project.featured ? "featured" : ""} ${
               project.isNew ? "new" : ""
-            }`}
+            } ${project.type === "UI/UX" ? "uiux-card" : ""}`}
             onClick={() => openProjectDetails(project)}
           >
             <div
               className="portfolio-image"
-              style={{ backgroundImage: `url(${project.image})` }}
+              style={{ backgroundImage: `url(${getProjectImage(project)})` }}
             >
               <div className="portfolio-overlay">
                 <span className="view-project">View Details</span>
@@ -122,19 +146,25 @@ const Portfolio = () => {
           onClick={closeProjectDetails}
         >
           <div
-            className="project-modal-content"
+            className={`project-modal-content ${
+              selectedProject.type === "UI/UX" ? "uiux-project" : ""
+            }`}
             onClick={(e) => e.stopPropagation()}
           >
             <button className="close-btn" onClick={closeProjectDetails}>
               &times;
             </button>
+
             <div
               className="project-modal-image"
-              style={{ backgroundImage: `url(${selectedProject.image})` }}
+              style={{
+                backgroundImage: `url(${getProjectImage(selectedProject)})`,
+              }}
             >
               <div className="project-image-overlay"></div>
               <h2 className="project-title-overlay">{selectedProject.title}</h2>
             </div>
+
             <div className="project-modal-details">
               <div className="project-meta">
                 <p className="project-type">{selectedProject.type}</p>
@@ -160,8 +190,11 @@ const Portfolio = () => {
                 </div>
               </div>
               <div className="action-buttons">
-                <button className="btn primary">View Project</button>
-                <button className="btn secondary">Case Study</button>
+                {selectedProject.title === "Obscura Artist Platform" && (
+                  <Link to="/obscura" className="btn primary">
+                    View Project
+                  </Link>
+                )}
               </div>
             </div>
           </div>

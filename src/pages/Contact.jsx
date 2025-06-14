@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import emailjs from "emailjs-com";
 import "../styles/Contact.css";
 
 const Contact = () => {
+  const form = useRef();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,12 +22,38 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
-    });
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    const serviceId = "YOUR_SERVICE_ID";
+    const templateId = "YOUR_TEMPLATE_ID";
+    const userId = "YOUR_USER_ID";
+
+    emailjs
+      .sendForm(serviceId, templateId, form.current, userId)
+      .then((result) => {
+        console.log("Email sent successfully:", result.text);
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+        setSubmitStatus({
+          type: "success",
+          message:
+            "Your message has been sent successfully! I will get back to you soon.",
+        });
+        setIsSubmitting(false);
+      })
+      .catch((error) => {
+        console.error("Failed to send email:", error.text);
+        setSubmitStatus({
+          type: "error",
+          message:
+            "Failed to send your message. Please try again or contact me directly via email.",
+        });
+        setIsSubmitting(false);
+      });
   };
 
   return (
@@ -47,7 +77,21 @@ const Contact = () => {
 
         <div className="contact-form">
           <h2>Send me a message</h2>
-          <form onSubmit={handleSubmit}>
+
+          {submitStatus && (
+            <div className={`status-message ${submitStatus.type}`}>
+              <i
+                className={`fas ${
+                  submitStatus.type === "success"
+                    ? "fa-check-circle"
+                    : "fa-exclamation-circle"
+                }`}
+              ></i>
+              <span>{submitStatus.message}</span>
+            </div>
+          )}
+
+          <form ref={form} onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Name</label>
               <input
@@ -84,8 +128,8 @@ const Contact = () => {
               ></textarea>
             </div>
 
-            <button type="submit" className="btn">
-              Send Message
+            <button type="submit" className="btn" disabled={isSubmitting}>
+              {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </form>
         </div>

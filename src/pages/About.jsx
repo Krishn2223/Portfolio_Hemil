@@ -27,13 +27,13 @@ const About = () => {
           <div className="profile-image"></div>
         </div>
       </div>
-      <div className="photo-grid">
+      {/* <div className="photo-grid">
         {photos.map((photo, index) => (
           <div key={index} className="photo-item">
             <img src={photo.src} alt={photo.alt} />
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };
