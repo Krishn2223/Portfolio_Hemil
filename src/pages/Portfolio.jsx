@@ -42,7 +42,6 @@ const Portfolio = () => {
   const [filter, setFilter] = useState("All");
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  // Handle window resize
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -52,7 +51,6 @@ const Portfolio = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Animation for projects on page load
   useEffect(() => {
     const timer = setTimeout(() => {
       setVisibleProjects(portfolioProjects);
@@ -60,7 +58,6 @@ const Portfolio = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Filter projects functionality
   const filteredProjects =
     filter === "All"
       ? portfolioProjects
@@ -85,7 +82,6 @@ const Portfolio = () => {
     }, 300);
   };
 
-  // Function to get the correct image based on device and project type
   const getProjectImage = (project) => {
     if (project.type === "UI/UX") {
       return isMobile ? project.mobileImage : project.webImage;

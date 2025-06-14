@@ -8,12 +8,10 @@ const Obscura = () => {
     <div className="obscura-container">
       <h1 className="obscura-title">Obscura Artist Platform</h1>
       <div className="devices-wrapper">
-        {/* Tablet View */}
         <div className="device tablet">
           <img src={webImage} alt="Obscura Web View" className="device-image" />
         </div>
 
-        {/* Mobile View */}
         <div className="device mobile">
           <img
             src={mobileImage}
