@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "../styles/Home.css";
 
 const Home = () => {
@@ -15,7 +16,7 @@ const Home = () => {
   return (
     <div className="home-container">
       <div className={`split-container ${activeSection}`}>
-        <div className="designer-section">
+        <Link to="/portfolio" className="designer-section">
           <div className="content">
             <h1>designer</h1>
             <p>
@@ -23,9 +24,9 @@ const Home = () => {
             </p>
           </div>
           <div className="background"></div>
-        </div>
+        </Link>
 
-        <div className="coder-section">
+        <Link to="/portfolio" className="coder-section">
           <div className="content">
             <h1>&lt;coder&gt;</h1>
             <p>
@@ -33,7 +34,7 @@ const Home = () => {
             </p>
           </div>
           <div className="background"></div>
-        </div>
+        </Link>
       </div>
     </div>
   );

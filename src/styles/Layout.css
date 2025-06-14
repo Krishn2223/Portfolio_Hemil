@@ -146,9 +146,6 @@ body {
   transform: scaleX(1);
 }
 
-.main-nav {
-  margin-left: 120px;
-}
 .main-nav ul {
   display: flex;
   gap: 2rem;
@@ -227,7 +224,6 @@ body {
 
 .main-content {
   animation: fadeIn 0.6s ease-out;
-  padding: 2rem;
 }
 @keyframes fadeIn {
   from {

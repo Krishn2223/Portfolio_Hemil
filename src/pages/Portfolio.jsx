@@ -5,7 +5,7 @@ const portfolioProjects = [
   {
     id: 1,
     title: "My UI Design Book",
-    type: "Book",
+    type: "Web",
     image: "/images/project1.jpg",
     description: "A comprehensive guide to UI design principles and practices.",
     featured: true,
@@ -14,7 +14,7 @@ const portfolioProjects = [
   {
     id: 2,
     title: "Creating a Lean Design System",
-    type: "Design System",
+    type: "UI/UX",
     image: "/images/project2.jpg",
     description:
       "Developing an efficient and scalable design system for modern applications.",
@@ -23,34 +23,10 @@ const portfolioProjects = [
   {
     id: 3,
     title: "Interior Design News Feed",
-    type: "Side Project",
+    type: "Graphics Design",
     image: "/images/project3.jpg",
     description: "A curated news platform for interior design enthusiasts.",
     isNew: true,
-  },
-  {
-    id: 4,
-    title: "E-commerce Mobile App",
-    type: "Mobile App",
-    image: "/images/project4.jpg",
-    description:
-      "A user-friendly mobile application for seamless online shopping.",
-  },
-  {
-    id: 5,
-    title: "Financial Dashboard",
-    type: "Web App",
-    image: "/images/project5.jpg",
-    description:
-      "An intuitive dashboard for tracking and analyzing financial data.",
-  },
-  {
-    id: 6,
-    title: "Travel Booking Platform",
-    type: "Website",
-    image: "/images/project6.jpg",
-    description:
-      "A comprehensive travel booking website with smooth user experience.",
   },
 ];
 

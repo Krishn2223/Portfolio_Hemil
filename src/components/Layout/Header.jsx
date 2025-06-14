@@ -11,7 +11,7 @@ const Header = () => {
           to="/"
           className="text-2xl font-bold text-gray-800 hover:text-blue-600 transition"
         >
-          Hemil
+          Hemil Web Studio
         </Link>
         <nav>
           <ul className="flex space-x-6">

@@ -1,14 +1,17 @@
 import React from "react";
 import "../styles/About.css";
+import phtot from "../assets/images/hemil-split-face-with-text.jpg";
 
 const About = () => {
   const photos = [
-    { src: "/images/photo1.jpg", alt: "Mini me" },
-    { src: "/images/photo2.jpg", alt: "Sunny Mumbai" },
+    { src: phtot, alt: "Mini me" },
+    {
+      src: "images/photo2.jpg",
+      alt: "Sunny Mumbai",
+    },
     { src: "/images/photo3.jpg", alt: "Home sweet home" },
     { src: "/images/photo4.jpg", alt: "My workspace" },
   ];
-
   return (
     <div className="about-container">
       <div className="about-content">
@@ -24,7 +27,6 @@ const About = () => {
           <div className="profile-image"></div>
         </div>
       </div>
-
       <div className="photo-grid">
         {photos.map((photo, index) => (
           <div key={index} className="photo-item">

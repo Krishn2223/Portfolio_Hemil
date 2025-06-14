@@ -235,7 +235,6 @@
     width: 100%;
   }
 }
-
 .profile-image::after {
   background-image: url("/src/assets/images/hemil-split-face-with-text.jpg");
 }

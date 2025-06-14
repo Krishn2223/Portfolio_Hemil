@@ -42,14 +42,6 @@ const Contact = () => {
               <i className="fab fa-linkedin-in"></i>
               <span>LinkedIn</span>
             </a>
-            <a href="#" className="social-link">
-              <i className="fab fa-facebook-f"></i>
-              <span>Facebook</span>
-            </a>
-            <a href="#" className="social-link">
-              <i className="fab fa-instagram"></i>
-              <span>Instagram</span>
-            </a>
           </div>
         </div>
 
